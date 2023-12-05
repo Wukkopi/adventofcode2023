@@ -13,7 +13,7 @@ namespace AdventOfCode
             public readonly int Red;
             public readonly int Green;
             public readonly int Blue;
-
+            public readonly int Power => Red * Green * Blue;
             public DiceCollection(int red = 0, int green = 0, int blue = 0)
             {
                 Red = red;
@@ -29,18 +29,21 @@ namespace AdventOfCode
             {
                 return !(a < b);
             }
+            public static DiceCollection Max(DiceCollection a, DiceCollection b)
+            {
+                return new DiceCollection(Math.Max(a.Red, b.Red), Math.Max(a.Green, b.Green), Math.Max(a.Blue, b.Blue));
+            }
         }
 
         public static int Part1(string[] input)
         {
-            var diceBag = new DiceCollection(12, 13, 14);
             var entries = new Dictionary<string, int>();
             var result = 0;
 
             for (var i = 0; i < input.Length; i++)
             {
                 var records = input[i].Substring(input[i].IndexOf(':') + 1).Split(';');
-                var possibleGame = true;
+                var minimumDice = new DiceCollection();
                 foreach(var record in records)
                 {
                     entries.Clear();
@@ -50,17 +53,11 @@ namespace AdventOfCode
                         entries.Add(entry[1], int.Parse(entry[0]));
                     }
                     var hand = new DiceCollection(entries.GetValueOrDefault("red"), entries.GetValueOrDefault("green"), entries.GetValueOrDefault("blue"));
-                    if (diceBag < hand)
-                    {
-                        // impossible game found
-                        possibleGame = false;
-                        break;
-                    }
+                    minimumDice = DiceCollection.Max(hand, minimumDice);
                 }
-                if (possibleGame)
-                {
-                    result += (i + 1);
-                }
+
+                result += minimumDice.Power;
+                
             }
             return result;
         }

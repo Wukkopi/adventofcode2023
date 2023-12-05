@@ -23,7 +23,7 @@ namespace AdventOfCode.Test
             };
 
             var result = Day2.Part1(input);
-            Assert.That(result, Is.EqualTo(8));
+            Assert.That(result, Is.EqualTo(2286));
         }
 
     }
