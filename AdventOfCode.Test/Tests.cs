@@ -47,7 +47,9 @@ namespace AdventOfCode.Test
                 ".664.598.."
             };
 
-            var result = 0;
+            var day = new Day3(input);
+            Assert.That(day.Part1, Is.EqualTo(4361));
+            Assert.That(day.Part2, Is.EqualTo(467835));
         }
 
     }
