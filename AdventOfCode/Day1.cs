@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AdventOfCode
 {
-    public static class Day1
+    public class Day1 : Day
     {
         private static readonly string[] digits = new string[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-        public static int Part1(string[] input)
+
+        public Day1(string[] input) : base(input) { }
+
+        protected override int SolvePart1()
         {
             var result = 0;
             foreach(var line in input)
@@ -17,12 +21,33 @@ namespace AdventOfCode
                 var values = new char[2];
                 for(var i = 0; i < line.Length; i++)
                 {
+                    if (!char.IsDigit(line[i]))
+                    {
+                        continue;
+                    }
+                    var digit = line[i];
+                    values[0] = values[0] == 0 ? digit : values[0];
+                    values[1] = digit;
+                }
+                result += values[0] != 0 ? int.Parse(string.Concat(values)) : 0;
+            }
+            return result;
+        }
+
+        protected override int SolvePart2()
+        {
+            var result = 0;
+            foreach (var line in input)
+            {
+                var values = new char[2];
+                for (var i = 0; i < line.Length; i++)
+                {
                     var digit = '-';
                     if (char.IsDigit(line[i]))
                     {
                         digit = line[i];
                     }
-                    else if (Part2(line, i, out var number))
+                    else if (findDigitText(line, i, out var number))
                     {
                         digit = number;
                     }
@@ -38,7 +63,7 @@ namespace AdventOfCode
             return result;
         }
 
-        private static bool Part2(string input, int index, out char digit)
+        private static bool findDigitText(string input, int index, out char digit)
         {
             digit = '-';
             var testInput = input.Substring(index);

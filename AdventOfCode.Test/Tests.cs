@@ -7,8 +7,10 @@ namespace AdventOfCode.Test
         public void TestDay1()
         {
             var input = new string[] { "asv23v43", "2vdv3", "123", "alxkjdone" }; // 23 + 23 + 13 + 11 = 70
-            var result = Day1.Part1(input);
-            Assert.That(result, Is.EqualTo(70));
+            var day = new Day1(input);
+
+            Assert.That(day.Part1, Is.EqualTo(59));
+            Assert.That(day.Part2, Is.EqualTo(70));
         }
 
         [Test]
@@ -22,8 +24,30 @@ namespace AdventOfCode.Test
                 "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
             };
 
-            var result = Day2.Part1(input);
-            Assert.That(result, Is.EqualTo(2286));
+            var day = new Day2(input);
+
+            Assert.That(day.Part1, Is.EqualTo(8));
+            Assert.That(day.Part2, Is.EqualTo(2286));
+        }
+
+        [Test]
+        public void TestDay3()
+        {
+            var input = new string[]
+            {
+                "467..114..",
+                "...*......",
+                "..35..633.",
+                "......#...",
+                "617*......",
+                ".....+.58.",
+                "..592.....",
+                "......755.",
+                "...$.*....",
+                ".664.598.."
+            };
+
+            var result = 0;
         }
 
     }

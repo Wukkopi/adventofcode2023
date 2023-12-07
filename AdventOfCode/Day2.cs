@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode
 {
-    public static class Day2
+    public class Day2 : Day
     {
         public readonly struct DiceCollection
         {
@@ -35,7 +35,43 @@ namespace AdventOfCode
             }
         }
 
-        public static int Part1(string[] input)
+        public Day2(string[] input) :base(input) { }
+
+        protected override int SolvePart1()
+        {
+            var diceBag = new DiceCollection(12, 13, 14);
+            var entries = new Dictionary<string, int>();
+            var result = 0;
+
+            for (var i = 0; i < input.Length; i++)
+            {
+                var records = input[i].Substring(input[i].IndexOf(':') + 1).Split(';');
+                var possibleGame = true;
+                foreach (var record in records)
+                {
+                    entries.Clear();
+                    foreach (var dice in record.Split(','))
+                    {
+                        var entry = dice.Trim().Split(' ');
+                        entries.Add(entry[1], int.Parse(entry[0]));
+                    }
+                    var hand = new DiceCollection(entries.GetValueOrDefault("red"), entries.GetValueOrDefault("green"), entries.GetValueOrDefault("blue"));
+                    if (diceBag < hand)
+                    {
+                        // impossible game found
+                        possibleGame = false;
+                        break;
+                    }
+                }
+                if (possibleGame)
+                {
+                    result += (i + 1);
+                }
+            }
+            return result;
+        }
+
+        protected override int SolvePart2()
         {
             var entries = new Dictionary<string, int>();
             var result = 0;
