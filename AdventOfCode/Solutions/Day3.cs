@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode
+namespace AdventOfCode.solutions
 {
     public class Day3 : Day
     {
@@ -87,7 +87,7 @@ namespace AdventOfCode
             return input.Trim(new char[] { '.', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' }).Length > 0;
         }
 
-        private static List<int> findAdjacentNumbers (string input, int gearIndex)
+        private static List<int> findAdjacentNumbers(string input, int gearIndex)
         {
             var result = new List<int>();
             for (var i = 0; i < input.Length; i++)

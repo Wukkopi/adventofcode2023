@@ -1,3 +1,5 @@
+using AdventOfCode.Solutions;
+
 namespace AdventOfCode.Test
 {
     public class Tests

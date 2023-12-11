@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode
+namespace AdventOfCode.Solutions
 {
     public class Day4 : Day
     {
@@ -12,14 +12,14 @@ namespace AdventOfCode
         protected override int SolvePart1()
         {
             var result = 0;
-            foreach(var card in input) 
+            foreach (var card in input)
             {
                 ParseCard(card, out var _, out var left, out var right);
                 var sameNumbers = left.Intersect(right).Count();
 
                 if (sameNumbers > 0)
                 {
-                    result += 1 << (sameNumbers - 1);
+                    result += 1 << sameNumbers - 1;
                 }
             }
             return result;
@@ -29,7 +29,7 @@ namespace AdventOfCode
         {
             var result = 0;
             var sparePile = new Stack<string>(input);
-            while(sparePile.Count > 0)
+            while (sparePile.Count > 0)
             {
                 result++;
                 ParseCard(sparePile.Pop(), out var cardId, out var left, out var right);

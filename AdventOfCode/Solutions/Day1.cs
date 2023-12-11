@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode
+namespace AdventOfCode.Solutions
 {
     public class Day1 : Day
     {
@@ -16,10 +16,10 @@ namespace AdventOfCode
         protected override int SolvePart1()
         {
             var result = 0;
-            foreach(var line in input)
+            foreach (var line in input)
             {
                 var values = new char[2];
-                for(var i = 0; i < line.Length; i++)
+                for (var i = 0; i < line.Length; i++)
                 {
                     if (!char.IsDigit(line[i]))
                     {

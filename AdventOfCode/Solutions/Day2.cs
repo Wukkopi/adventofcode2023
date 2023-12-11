@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode
+namespace AdventOfCode.Solutions
 {
     public class Day2 : Day
     {
@@ -21,11 +21,11 @@ namespace AdventOfCode
                 Blue = blue;
             }
 
-            public static bool operator < (DiceCollection a, DiceCollection b)
+            public static bool operator <(DiceCollection a, DiceCollection b)
             {
                 return a.Red < b.Red || a.Green < b.Green || a.Blue < b.Blue;
             }
-            public static bool operator > (DiceCollection a, DiceCollection b)
+            public static bool operator >(DiceCollection a, DiceCollection b)
             {
                 return !(a < b);
             }
@@ -35,7 +35,7 @@ namespace AdventOfCode
             }
         }
 
-        public Day2(string[] input) :base(input) { }
+        public Day2(string[] input) : base(input) { }
 
         protected override int SolvePart1()
         {
@@ -65,7 +65,7 @@ namespace AdventOfCode
                 }
                 if (possibleGame)
                 {
-                    result += (i + 1);
+                    result += i + 1;
                 }
             }
             return result;
@@ -80,7 +80,7 @@ namespace AdventOfCode
             {
                 var records = input[i].Substring(input[i].IndexOf(':') + 1).Split(';');
                 var minimumDice = new DiceCollection();
-                foreach(var record in records)
+                foreach (var record in records)
                 {
                     entries.Clear();
                     foreach (var dice in record.Split(','))
@@ -93,7 +93,7 @@ namespace AdventOfCode
                 }
 
                 result += minimumDice.Power;
-                
+
             }
             return result;
         }
