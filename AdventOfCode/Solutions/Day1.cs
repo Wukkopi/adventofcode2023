@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode.Solutions
+﻿namespace AdventOfCode.Solutions
 {
-    public class Day1 : Day
+    public class Day1 : Day<int>
     {
         private static readonly string[] digits = new string[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 

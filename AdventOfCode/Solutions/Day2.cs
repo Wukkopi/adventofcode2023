@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode.Solutions
+﻿namespace AdventOfCode.Solutions
 {
-    public class Day2 : Day
+    public class Day2 : Day<int>
     {
         public readonly struct DiceCollection
         {

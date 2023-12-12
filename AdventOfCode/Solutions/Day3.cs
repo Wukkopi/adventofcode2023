@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode.solutions
+﻿namespace AdventOfCode.Solutions
 {
-    public class Day3 : Day
+    public class Day3 : Day<int>
     {
         public Day3(string[] input) : base(input) { }
         protected override int SolvePart1()
