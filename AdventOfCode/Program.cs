@@ -9,7 +9,8 @@ public class Program
 		//var day3 = new Day3(File.ReadAllLines("files/Day3.txt"));
 		//var day4 = new Day4(File.ReadAllLines("files/Day4.txt"));
 		//var day5 = new Day5(File.ReadAllLines("files/Day5.txt"));
-		var day6 = new Day6(File.ReadAllLines("files/Day6.txt"));
+		//var day6 = new Day6(File.ReadAllLines("files/Day6.txt"));
+		var day7 = new Day7(File.ReadAllLines("files/Day7.txt"));
 		
 		Console.WriteLine("---===Advent Of Code 2023===---");
 		//Console.WriteLine($"Day1 solutions = {day1.Part1} & {day1.Part2}");
@@ -17,6 +18,7 @@ public class Program
 		//Console.WriteLine($"Day3 solutions = {day3.Part1} & {day3.Part2}");
 		//Console.WriteLine($"Day4 solutions = {day4.Part1} & {day4.Part2}");
 		//Console.WriteLine($"Day5 solutions = {day5.Part1} & {day5.Part2}");
-		Console.WriteLine($"Day6 solutions = {day6.Part1} & {day6.Part2}");
+		//Console.WriteLine($"Day6 solutions = {day6.Part1} & {day6.Part2}");
+		Console.WriteLine($"Day7 solutions = {day7.Part1} & {day7.Part2}");
 	}
 }

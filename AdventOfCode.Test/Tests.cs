@@ -127,5 +127,21 @@ namespace AdventOfCode.Test
             Assert.That(day.Part1, Is.EqualTo(288));
             Assert.That(day.Part2, Is.EqualTo(71503));
         }
+
+        [Test]
+        public void TestDay7()
+        {
+            var input = new string[]
+            {
+                "32T3K 765",
+                "T55J5 684",
+                "KK677 28",
+                "KTJJT 220",
+                "QQQJA 483"
+            };
+            var day = new Day7(input);
+            Assert.That(day.Part1, Is.EqualTo(6440));
+            Assert.That(day.Part2, Is.EqualTo(5905));
+        }
     }
 }
