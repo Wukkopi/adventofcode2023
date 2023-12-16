@@ -143,5 +143,40 @@ namespace AdventOfCode.Test
             Assert.That(day.Part1, Is.EqualTo(6440));
             Assert.That(day.Part2, Is.EqualTo(5905));
         }
+
+        [Test]
+        public void TestDay8Part1()
+        {
+            var input = new string[]
+            {
+                "LLR",
+                "",
+                "AAA = (BBB, BBB)",
+                "BBB = (AAA, ZZZ)",
+                "ZZZ = (ZZZ, ZZZ)"
+            };
+            var day = new Day8(input);
+            Assert.That(day.Part1, Is.EqualTo(6));
+            //Assert.That(day.Part2, Is.EqualTo(5905));
+        }
+        [Test]
+        public void TestDay8Part2()
+        {
+            var input = new string[]
+            {
+                "LR",
+                "",
+                "11A = (11B, XXX)",
+                "11B = (XXX, 11Z)",
+                "11Z = (11B, XXX)",
+                "22A = (22B, XXX)",
+                "22B = (22C, 22C)",
+                "22C = (22Z, 22Z)",
+                "22Z = (22B, 22B)",
+                "XXX = (XXX, XXX)"
+            };
+            var day = new Day8(input);
+            Assert.That(day.Part2, Is.EqualTo(6));
+        }
     }
 }
