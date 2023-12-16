@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection.Emit;
+using System.Runtime;
 using System.Runtime.ExceptionServices;
 using System.Text.RegularExpressions;
 
@@ -52,6 +53,7 @@ namespace AdventOfCode.Solutions
 
             var ghostNodes = new List<Node>();
 
+            var result = 0L;
             foreach(var n in graph)
             {
                 if (n.Value.Name.EndsWith('A'))
@@ -64,57 +66,32 @@ namespace AdventOfCode.Solutions
                 }
             }
 
-            var steps = 0L;
-            var finished = false;
             var instructionPoint = 0;
             try
             {
-                do
+
+                var loops = new long[ghostNodes.Count];
+
+                for (var i = 0; i < ghostNodes.Count; i++)
                 {
-                    if (steps % 100000 == 0) Console.WriteLine(steps);
-
-
-                    while (instructionPoint >= instructions.Length) instructionPoint -= instructions.Length;
-
-                    //var ghostPickup = 0;
-                    //while (!finished || !ghostNodes[0].Name.EndsWith('Z'))
-                    //{
-                    //    var iPos = (instructionPoint + ghostPickup++) % instructions.Length;
-                    //    ghostNodes[0] = instructions[iPos] == 'L' ? ghostNodes[0].Left : ghostNodes[0].Right;
-                    //    finished = true;
-                    //}
-                    //ghostPickup = 0;
-                    //while (!finished || !ghostNodes[1].Name.EndsWith('Z'))
-                    //{
-                    //    var iPos = (instructionPoint + ghostPickup++) % instructions.Length;
-                    //    ghostNodes[1] = instructions[iPos] == 'L' ? ghostNodes[1].Left : ghostNodes[1].Right;
-                    //    finished = true;
-                    //}
-
-                    for (var i = 0; i < ghostNodes.Count; i++)
+                    var steps = 0;
+                    while (!ghostNodes[i].Name.EndsWith('Z'))
                     {
-                        //for (var j = 0; j < ghostPickup; j++)
-                        {
-                            var iPos = instructionPoint % instructions.Length;
-                            ghostNodes[i] = instructions[iPos] == 'L' ? ghostNodes[i].Left : ghostNodes[i].Right;
-                        }
-                        if (finished && !ghostNodes[i].IsExit)
-                        {
-                            finished = false;
-                        }
+                        var iPos = (instructionPoint + steps++) % instructions.Length;
+                        ghostNodes[i] = instructions[iPos] == 'L' ? ghostNodes[i].Left : ghostNodes[i].Right;
                     }
+                    loops[i] = steps;
+                }
 
-
-                    steps++; //= ghostPickup;
-                    instructionPoint++;// += ghostPickup;
-                } while (!finished);
+                result = Utility.LCM(loops);
             }
             catch(Exception e)
             {
                 Console.WriteLine(e);
             }
-            return steps;
+            return result ;
         }
+
 
         private Dictionary<string, Node> parseNodes(out string instructions)
         {

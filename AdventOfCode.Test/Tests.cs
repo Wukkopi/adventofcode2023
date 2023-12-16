@@ -178,5 +178,14 @@ namespace AdventOfCode.Test
             var day = new Day8(input);
             Assert.That(day.Part2, Is.EqualTo(6));
         }
+
+        [Test]
+        public void TestLCM()
+        {
+            Assert.That(Utility.LCM(new long[] {2, 3}), Is.EqualTo(6));
+            Assert.That(Utility.LCM(new long[] {9, 12, 21}), Is.EqualTo(252));
+            Assert.That(Utility.LCM(new long[] {9, 12, 21, 23, 400}), Is.EqualTo(579600));
+
+        }
     }
 }
