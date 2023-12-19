@@ -4,7 +4,7 @@ public class Program
 {
 	static void Main(string[] args)
 	{
-		var day = new Day8(File.ReadAllLines("files/Day8.txt"));
+		var day = new Day9(File.ReadAllLines("files/Day9.txt"));
 		
 		Console.WriteLine("---===Advent Of Code 2023===---");
 
