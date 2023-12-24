@@ -202,6 +202,57 @@ namespace AdventOfCode.Test
             Assert.That(day.Part2, Is.EqualTo(2));
         }
 
+        [Test]
+        public void TestDay10Part1()
+        {
+            var input = new string[]
+            {
+                "..F7.",
+                ".FJ|.",
+                "SJ.L7",
+                "|F--J",
+                "LJ...",
+            };
+            var day = new Day10(input);
+            Assert.That(day.Part1, Is.EqualTo(8));
+        }
 
+        [Test]
+        public void TestDay10Part2()
+        {
+            var input = new string[]
+            {
+                "FF7---7F7F7F7F7F---7",
+                "L|L----J||||||||F--J",
+                "FL-7iiii||||||LJL-77",
+                "F--JF--7||LJLJiF7FJ-",
+                "L---JF-JLJiiiiFJLJJ7",
+                "|F|F-JF---SiiiL7L|7|",
+                "|FFJF7L7F-JF7iiL---7",
+                "7-L-JL7||F7|L7F-7F7|",
+                "L.L7LFJ|||||FJL7||LJ",
+                "L7JLJL-JLJLJL--JLJ.L",
+            };
+            var day = new Day10(input);
+            Assert.That(day.Part2, Is.EqualTo(14));
+        }
+
+        [Test]
+        public void TestDay10Part2_2()
+        {
+            var input = new string[]
+            {
+                ".S-------7.",
+                ".|F-----7|.",
+                ".||.....||.",
+                ".||.....||.",
+                ".|L-7.F-J|.",
+                ".|..|.|..|.",
+                ".L--J.L--J.",
+                "...........",
+            };
+            var day = new Day10(input);
+            Assert.That(day.Part2, Is.EqualTo(4));
+        }
     }
 }
